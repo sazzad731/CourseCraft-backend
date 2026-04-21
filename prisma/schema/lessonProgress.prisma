@@ -1,0 +1,18 @@
+model LessonProgress {
+  id        String   @id @default(uuid())
+  completed Boolean  @default(false)
+
+  // Foreign Keys
+  user_id   String
+  lesson_id String
+
+  // Relationships
+  user      User     @relation(fields: [user_id], references: [id])
+  lesson    Lesson   @relation(fields: [lesson_id], references: [id], onDelete: Cascade)
+
+  updated_at DateTime @updatedAt
+
+  @@index([user_id])
+  @@index([lesson_id])
+  @@unique([user_id, lesson_id]) // Ensures a user has only one progress record per lesson
+}

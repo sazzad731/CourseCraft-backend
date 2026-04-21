@@ -1,0 +1,12 @@
+model Question {
+  id            String @id @default(uuid())
+  question_text String @db.Text
+
+  // Foreign Key and Relationship
+  quiz_id       String
+  quiz          Quiz   @relation(fields: [quiz_id], references: [id], onDelete: Cascade)
+
+  options Option[]
+
+  @@index([quiz_id])
+}

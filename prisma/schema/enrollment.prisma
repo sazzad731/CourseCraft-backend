@@ -1,0 +1,17 @@
+model Enrollment {
+  id          String   @id @default(uuid())
+  
+  // Foreign Keys
+  user_id     String
+  course_id   String
+  
+  // Relationships
+  user        User     @relation(fields: [user_id], references: [id])
+  course      Course   @relation(fields: [course_id], references: [id])
+  
+  enrolled_at DateTime @default(now())
+
+  @@index([user_id])
+  @@index([course_id])
+  @@unique([user_id, course_id]) // Prevents duplicate enrollments
+}

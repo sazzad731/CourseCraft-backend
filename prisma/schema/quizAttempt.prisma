@@ -1,0 +1,17 @@
+model QuizAttempt {
+  id           String   @id @default(uuid())
+  score        Float
+  is_passed    Boolean
+  attempted_at DateTime @default(now())
+
+  // Foreign Keys
+  user_id      String
+  quiz_id      String
+
+  // Relationships
+  user         User     @relation(fields: [user_id], references: [id])
+  quiz         Quiz     @relation(fields: [quiz_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+  @@index([quiz_id])
+}

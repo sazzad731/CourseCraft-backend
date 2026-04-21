@@ -1,0 +1,18 @@
+model Quiz {
+  id              String   @id @default(uuid())
+  title           String
+  time_limit      Int?     // Time in minutes
+  pass_percentage Float    @default(80.0)
+
+  // Foreign Key and Relationship
+  course_id       String   @unique
+  course          Course   @relation(fields: [course_id], references: [id], onDelete: Cascade)
+
+  questions Question[]
+  attempts QuizAttempt[]
+
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  @@index([course_id])
+}

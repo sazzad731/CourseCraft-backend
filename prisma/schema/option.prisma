@@ -1,0 +1,11 @@
+model Option {
+  id          String   @id @default(uuid())
+  text        String   @db.Text
+  is_correct  Boolean  @default(false)
+
+  // Foreign Key and Relationship
+  question_id String
+  question    Question @relation(fields: [question_id], references: [id], onDelete: Cascade)
+
+  @@index([question_id])
+}

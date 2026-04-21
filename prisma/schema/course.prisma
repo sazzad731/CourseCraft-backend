@@ -1,0 +1,41 @@
+model Course {
+  id           String       @id @default(uuid())
+  title        String
+  description  String?      @db.Text
+  category     String
+  thumbnail    String?
+  difficulty   Difficulty   @default(Beginner)
+  price_type   PriceType    @default(FREE)
+  status       CourseStatus @default(DRAFT)
+  
+  // Foreign Key and Relationship
+  instructor_id String
+  instructor    User        @relation(fields: [instructor_id], references: [id])
+  
+  created_at    DateTime     @default(now())
+
+  enrollments Enrollment[]
+  lessons Lesson[]
+  quizzes Quiz[]
+  certificates Certificate[]
+
+  @@index([instructor_id])
+}
+
+
+enum Difficulty {
+  Beginner
+  Intermediate
+  Advanced
+}
+
+enum PriceType {
+  FREE
+  PAID
+}
+
+enum CourseStatus {
+  DRAFT
+  PENDING
+  PUBLISHED
+}

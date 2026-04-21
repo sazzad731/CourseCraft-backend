@@ -1,0 +1,40 @@
+model User {
+  id        String     @id @default(uuid())
+  name      String
+  email     String     @unique
+  password  String
+  role      Role   @default(STUDENT)
+  status    Status @default(ACTIVE)
+  phone     String?
+  address   String?
+  image     String?
+  rejection_reason String?
+
+  courses Course[]
+  enrollments Enrollment[]
+  progress LessonProgress[]
+  quiz_attempts QuizAttempt[]
+  certificates Certificate[]
+  
+
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@index([status])
+  @@map("users")
+}
+
+enum Role {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
+}
+
+enum Status {
+  PENDING
+  ACTIVE
+  REJECTED
+  SUSPENDED
+}
