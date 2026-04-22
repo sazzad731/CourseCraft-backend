@@ -1,6 +1,6 @@
-import { prisma } from "../../lib/prisma";
-import { IEnrollmentResponse } from "./enrollment.interface";
-import { ENROLLMENT_MESSAGES } from "./enrollment.constant";
+import { prisma } from "../../lib/prisma.js";
+import { IEnrollmentResponse } from "./enrollment.interface.js";
+import { ENROLLMENT_MESSAGES } from "./enrollment.constant.js";
 
 // Enroll student in course
 const enrollStudent = async (studentId: string, courseId: string): Promise<IEnrollmentResponse> => {

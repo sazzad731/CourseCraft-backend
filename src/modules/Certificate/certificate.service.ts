@@ -1,6 +1,6 @@
-import { prisma } from "../../lib/prisma";
-import { ICertificateResponse } from "./certificate.interface";
-import { CERTIFICATE_MESSAGES } from "./certificate.constant";
+import { prisma } from "../../lib/prisma.js";
+import { ICertificateResponse } from "./certificate.interface.js";
+import { CERTIFICATE_MESSAGES } from "./certificate.constant.js";
 
 // Get student certificates
 const getStudentCertificates = async (studentId: string): Promise<ICertificateResponse[]> => {

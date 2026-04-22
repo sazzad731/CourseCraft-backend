@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { EnrollmentService } from "./enrollment.service";
-import { ENROLLMENT_MESSAGES } from "./enrollment.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { EnrollmentService } from "./enrollment.service.js";
+import { ENROLLMENT_MESSAGES } from "./enrollment.constant.js";
 
 const enrollStudent = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -12,7 +12,7 @@ const enrollStudent = async (req: Request, res: Response, next: NextFunction) =>
       throw new Error("User ID not found");
     }
 
-    const result = await EnrollmentService.enrollStudent(studentId, courseId);
+    const result = await EnrollmentService.enrollStudent(studentId, courseId as string);
 
     sendResponse(res, {
       statusCode: 201,
@@ -50,7 +50,7 @@ const getCourseEnrollments = async (req: Request, res: Response, next: NextFunct
   try {
     const { courseId } = req.params;
 
-    const result = await EnrollmentService.getCourseEnrollments(courseId);
+    const result = await EnrollmentService.getCourseEnrollments(courseId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -72,7 +72,7 @@ const removeEnrollment = async (req: Request, res: Response, next: NextFunction)
       throw new Error("User ID not found");
     }
 
-    await EnrollmentService.removeEnrollment(studentId, courseId);
+    await EnrollmentService.removeEnrollment(studentId, courseId as string);
 
     sendResponse(res, {
       statusCode: 200,

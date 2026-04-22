@@ -11,6 +11,6 @@ export interface IEnrollmentResponse {
   course?: {
     id: string;
     title: string;
-    description?: string;
+    description?: string | null;
   };
 }

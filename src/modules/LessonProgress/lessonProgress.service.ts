@@ -1,9 +1,9 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../lib/prisma.js";
 import {
   ILessonProgressResponse,
   ICourseProgressResponse,
-} from "./lessonProgress.interface";
-import { LESSON_PROGRESS_MESSAGES } from "./lessonProgress.constant";
+} from "./lessonProgress.interface.js";
+import { LESSON_PROGRESS_MESSAGES } from "./lessonProgress.constant.js";
 
 // Mark lesson as completed
 const markLessonComplete = async (

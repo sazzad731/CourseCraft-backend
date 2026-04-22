@@ -7,6 +7,20 @@
 *
 * 🟢 You can import this file directly.
 */
+export const Difficulty = {
+    Beginner: 'Beginner',
+    Intermediate: 'Intermediate',
+    Advanced: 'Advanced'
+};
+export const PriceType = {
+    FREE: 'FREE',
+    PAID: 'PAID'
+};
+export const CourseStatus = {
+    DRAFT: 'DRAFT',
+    PENDING: 'PENDING',
+    PUBLISHED: 'PUBLISHED'
+};
 export const Role = {
     STUDENT: 'STUDENT',
     INSTRUCTOR: 'INSTRUCTOR',

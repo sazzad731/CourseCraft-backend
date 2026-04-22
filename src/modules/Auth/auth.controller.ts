@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { AuthService } from "./auth.service";
-import { AUTH_MESSAGES } from "./auth.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { AuthService } from "./auth.service.js";
+import { AUTH_MESSAGES } from "./auth.constant.js";
 
 const register = async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,6 +1,6 @@
 export interface ICreateQuizPayload {
   title: string;
-  time_limit?: number; // in minutes
+  time_limit?: number | null; // in minutes
   pass_percentage?: number;
   max_attempts?: number;
 }
@@ -10,7 +10,7 @@ export interface IUpdateQuizPayload extends Partial<ICreateQuizPayload> {}
 export interface IQuizResponse {
   id: string;
   title: string;
-  time_limit?: number;
+  time_limit?: number | null;
   pass_percentage: number;
   max_attempts?: number;
   course_id: string;
@@ -32,6 +32,6 @@ export interface IQuestion {
 export interface IOption {
   id: string;
   text: string;
-  is_correct: boolean;
+  is_correct?: boolean;
   question_id: string;
 }

@@ -1,7 +1,7 @@
 import express from "express";
-import { QuizController } from "./quiz.controller";
-import auth from "../../middlewares/auth";
-import { Role } from "../../../generated/prisma/enums";
+import { QuizController } from "./quiz.controller.js";
+import auth from "../../middlewares/auth.js";
+import { Role } from "../../../generated/prisma/enums.js";
 
 const router = express.Router();
 

@@ -207,7 +207,7 @@ Request Body:
 ```json
 {
   "status": "ACTIVE", // or "REJECTED"
-  "rejection_reason": "Reason for rejection (required if rejected)"
+  "rejection_reason": "Reason for rejection (required if rejected)" // Add if "REJECTED"
 }
 ```
 

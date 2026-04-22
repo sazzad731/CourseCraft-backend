@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { QuizAttemptService } from "./quizAttempt.service";
-import { QUIZ_ATTEMPT_MESSAGES } from "./quizAttempt.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { QuizAttemptService } from "./quizAttempt.service.js";
+import { QUIZ_ATTEMPT_MESSAGES } from "./quizAttempt.constant.js";
 
 const submitAttempt = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -28,7 +28,7 @@ const getAttemptById = async (req: Request, res: Response, next: NextFunction) =
   try {
     const { attemptId } = req.params;
 
-    const result = await QuizAttemptService.getAttemptById(attemptId);
+    const result = await QuizAttemptService.getAttemptById(attemptId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -50,7 +50,7 @@ const getUserQuizAttempts = async (req: Request, res: Response, next: NextFuncti
       throw new Error("User ID not found");
     }
 
-    const result = await QuizAttemptService.getUserQuizAttempts(studentId, quizId);
+    const result = await QuizAttemptService.getUserQuizAttempts(studentId, quizId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -69,7 +69,7 @@ const getQuizAttempts = async (req: Request, res: Response, next: NextFunction) 
     const { page = 1, limit = 10 } = req.query;
 
     const result = await QuizAttemptService.getQuizAttempts(
-      quizId,
+      quizId as string,
       Number(page),
       Number(limit)
     );
@@ -94,7 +94,7 @@ const getBestAttempt = async (req: Request, res: Response, next: NextFunction) =
       throw new Error("User ID not found");
     }
 
-    const result = await QuizAttemptService.getBestAttempt(studentId, quizId);
+    const result = await QuizAttemptService.getBestAttempt(studentId, quizId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -116,7 +116,7 @@ const getAttemptsCount = async (req: Request, res: Response, next: NextFunction)
       throw new Error("User ID not found");
     }
 
-    const count = await QuizAttemptService.getAttemptsCount(studentId, quizId);
+    const count = await QuizAttemptService.getAttemptsCount(studentId, quizId as string);
 
     sendResponse(res, {
       statusCode: 200,

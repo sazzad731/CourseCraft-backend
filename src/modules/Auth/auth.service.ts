@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import { prisma } from "../../lib/prisma";
-import config from "../../config";
-import { IRegisterPayload, ILoginPayload, IAuthResponse } from "./auth.interface";
-import { AUTH_MESSAGES, TOKEN_EXPIRY } from "./auth.constant";
+import jwt, { SignOptions } from "jsonwebtoken";
+import { prisma } from "../../lib/prisma.js";
+import config from "../../config/index.js";
+import { IRegisterPayload, ILoginPayload, IAuthResponse } from "./auth.interface.js";
+import { AUTH_MESSAGES, TOKEN_EXPIRY } from "./auth.constant.js";
 
 const register = async (payload: IRegisterPayload): Promise<any> => {
   // Check if user already exists
@@ -72,7 +72,7 @@ const login = async (email: string, password: string): Promise<IAuthResponse> =>
   };
 
   const token = jwt.sign(tokenData, config.secret as string, {
-    expiresIn: TOKEN_EXPIRY.ACCESS,
+    expiresIn: TOKEN_EXPIRY.ACCESS as SignOptions["expiresIn"],
   });
 
   return {

@@ -67,6 +67,15 @@ export const JsonNull = runtime.JsonNull;
  */
 export const AnyNull = runtime.AnyNull;
 export const ModelName = {
+    Certificate: 'Certificate',
+    Course: 'Course',
+    Enrollment: 'Enrollment',
+    Lesson: 'Lesson',
+    LessonProgress: 'LessonProgress',
+    Option: 'Option',
+    Question: 'Question',
+    Quiz: 'Quiz',
+    QuizAttempt: 'QuizAttempt',
     User: 'User'
 };
 /**
@@ -78,6 +87,77 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
     RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
+export const CertificateScalarFieldEnum = {
+    id: 'id',
+    score: 'score',
+    issued_at: 'issued_at',
+    user_id: 'user_id',
+    course_id: 'course_id'
+};
+export const CourseScalarFieldEnum = {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    category: 'category',
+    thumbnail: 'thumbnail',
+    difficulty: 'difficulty',
+    price_type: 'price_type',
+    status: 'status',
+    instructor_id: 'instructor_id',
+    created_at: 'created_at'
+};
+export const EnrollmentScalarFieldEnum = {
+    id: 'id',
+    user_id: 'user_id',
+    course_id: 'course_id',
+    enrolled_at: 'enrolled_at'
+};
+export const LessonScalarFieldEnum = {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    video_url: 'video_url',
+    is_preview: 'is_preview',
+    position: 'position',
+    course_id: 'course_id',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+export const LessonProgressScalarFieldEnum = {
+    id: 'id',
+    completed: 'completed',
+    user_id: 'user_id',
+    lesson_id: 'lesson_id',
+    updated_at: 'updated_at'
+};
+export const OptionScalarFieldEnum = {
+    id: 'id',
+    text: 'text',
+    is_correct: 'is_correct',
+    question_id: 'question_id'
+};
+export const QuestionScalarFieldEnum = {
+    id: 'id',
+    question_text: 'question_text',
+    quiz_id: 'quiz_id'
+};
+export const QuizScalarFieldEnum = {
+    id: 'id',
+    title: 'title',
+    time_limit: 'time_limit',
+    pass_percentage: 'pass_percentage',
+    course_id: 'course_id',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+};
+export const QuizAttemptScalarFieldEnum = {
+    id: 'id',
+    score: 'score',
+    is_passed: 'is_passed',
+    attempted_at: 'attempted_at',
+    user_id: 'user_id',
+    quiz_id: 'quiz_id'
+};
 export const UserScalarFieldEnum = {
     id: 'id',
     name: 'name',
@@ -88,6 +168,7 @@ export const UserScalarFieldEnum = {
     phone: 'phone',
     address: 'address',
     image: 'image',
+    rejection_reason: 'rejection_reason',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
@@ -95,9 +176,59 @@ export const SortOrder = {
     asc: 'asc',
     desc: 'desc'
 };
+export const CertificateOrderByRelevanceFieldEnum = {
+    id: 'id',
+    user_id: 'user_id',
+    course_id: 'course_id'
+};
 export const NullsOrder = {
     first: 'first',
     last: 'last'
+};
+export const CourseOrderByRelevanceFieldEnum = {
+    id: 'id',
+    title: 'title',
+    description: 'description',
+    category: 'category',
+    thumbnail: 'thumbnail',
+    instructor_id: 'instructor_id'
+};
+export const EnrollmentOrderByRelevanceFieldEnum = {
+    id: 'id',
+    user_id: 'user_id',
+    course_id: 'course_id'
+};
+export const LessonOrderByRelevanceFieldEnum = {
+    id: 'id',
+    title: 'title',
+    content: 'content',
+    video_url: 'video_url',
+    course_id: 'course_id'
+};
+export const LessonProgressOrderByRelevanceFieldEnum = {
+    id: 'id',
+    user_id: 'user_id',
+    lesson_id: 'lesson_id'
+};
+export const OptionOrderByRelevanceFieldEnum = {
+    id: 'id',
+    text: 'text',
+    question_id: 'question_id'
+};
+export const QuestionOrderByRelevanceFieldEnum = {
+    id: 'id',
+    question_text: 'question_text',
+    quiz_id: 'quiz_id'
+};
+export const QuizOrderByRelevanceFieldEnum = {
+    id: 'id',
+    title: 'title',
+    course_id: 'course_id'
+};
+export const QuizAttemptOrderByRelevanceFieldEnum = {
+    id: 'id',
+    user_id: 'user_id',
+    quiz_id: 'quiz_id'
 };
 export const UserOrderByRelevanceFieldEnum = {
     id: 'id',
@@ -106,6 +237,7 @@ export const UserOrderByRelevanceFieldEnum = {
     password: 'password',
     phone: 'phone',
     address: 'address',
-    image: 'image'
+    image: 'image',
+    rejection_reason: 'rejection_reason'
 };
 export const defineExtension = runtime.Extensions.defineExtension;

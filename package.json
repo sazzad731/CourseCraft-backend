@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Online Course & Quiz Platform Backend",
-  "main": "dist/server.js",
+  "main": "dist/src/server.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "dev": "npx tsx watch src/server.ts",
     "build": "tsc",
     "lint": "eslint src/**/*.ts",

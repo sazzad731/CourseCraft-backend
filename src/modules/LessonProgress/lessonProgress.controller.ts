@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { LessonProgressService } from "./lessonProgress.service";
-import { LESSON_PROGRESS_MESSAGES } from "./lessonProgress.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { LessonProgressService } from "./lessonProgress.service.js";
+import { LESSON_PROGRESS_MESSAGES } from "./lessonProgress.constant.js";
 
 const markLessonComplete = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -12,7 +12,7 @@ const markLessonComplete = async (req: Request, res: Response, next: NextFunctio
       throw new Error("User ID not found");
     }
 
-    const result = await LessonProgressService.markLessonComplete(studentId, lessonId);
+    const result = await LessonProgressService.markLessonComplete(studentId, lessonId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -34,7 +34,7 @@ const getCourseProgress = async (req: Request, res: Response, next: NextFunction
       throw new Error("User ID not found");
     }
 
-    const result = await LessonProgressService.getCourseProgress(studentId, courseId);
+    const result = await LessonProgressService.getCourseProgress(studentId, courseId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -56,7 +56,7 @@ const getCompletedLessons = async (req: Request, res: Response, next: NextFuncti
       throw new Error("User ID not found");
     }
 
-    const result = await LessonProgressService.getCompletedLessons(studentId, courseId);
+    const result = await LessonProgressService.getCompletedLessons(studentId, courseId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -78,7 +78,7 @@ const isLessonCompleted = async (req: Request, res: Response, next: NextFunction
       throw new Error("User ID not found");
     }
 
-    const isCompleted = await LessonProgressService.isLessonCompleted(studentId, lessonId);
+    const isCompleted = await LessonProgressService.isLessonCompleted(studentId, lessonId as string);
 
     sendResponse(res, {
       statusCode: 200,

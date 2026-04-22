@@ -1,10 +1,10 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../lib/prisma.js";
 import {
   ICreateLessonPayload,
   IUpdateLessonPayload,
   ILessonResponse,
-} from "./lesson.interface";
-import { LESSON_MESSAGES } from "./lesson.constant";
+} from "./lesson.interface.js";
+import { LESSON_MESSAGES } from "./lesson.constant.js";
 
 // Create lesson
 const createLesson = async (

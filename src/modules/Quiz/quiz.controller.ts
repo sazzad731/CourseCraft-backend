@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { QuizService } from "./quiz.service";
-import { QUIZ_MESSAGES } from "./quiz.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { QuizService } from "./quiz.service.js";
+import { QUIZ_MESSAGES } from "./quiz.constant.js";
 
 const createQuiz = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -12,7 +12,7 @@ const createQuiz = async (req: Request, res: Response, next: NextFunction) => {
       throw new Error("User ID not found");
     }
 
-    const result = await QuizService.createQuiz(courseId, req.body, instructorId);
+    const result = await QuizService.createQuiz(courseId as string, req.body, instructorId);
 
     sendResponse(res, {
       statusCode: 201,
@@ -34,7 +34,7 @@ const updateQuiz = async (req: Request, res: Response, next: NextFunction) => {
       throw new Error("User ID not found");
     }
 
-    const result = await QuizService.updateQuiz(quizId, req.body, instructorId);
+    const result = await QuizService.updateQuiz(quizId as string, req.body, instructorId);
 
     sendResponse(res, {
       statusCode: 200,
@@ -56,7 +56,7 @@ const deleteQuiz = async (req: Request, res: Response, next: NextFunction) => {
       throw new Error("User ID not found");
     }
 
-    await QuizService.deleteQuiz(quizId, instructorId);
+    await QuizService.deleteQuiz(quizId as string, instructorId);
 
     sendResponse(res, {
       statusCode: 200,
@@ -72,7 +72,7 @@ const getQuizById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { quizId } = req.params;
 
-    const result = await QuizService.getQuizById(quizId);
+    const result = await QuizService.getQuizById(quizId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -89,7 +89,7 @@ const getQuizByCourse = async (req: Request, res: Response, next: NextFunction) 
   try {
     const { courseId } = req.params;
 
-    const result = await QuizService.getQuizByCourse(courseId);
+    const result = await QuizService.getQuizByCourse(courseId as string);
 
     sendResponse(res, {
       statusCode: 200,

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { LessonService } from "./lesson.service";
-import { LESSON_MESSAGES } from "./lesson.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { LessonService } from "./lesson.service.js";
+import { LESSON_MESSAGES } from "./lesson.constant.js";
 
 const createLesson = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -12,7 +12,7 @@ const createLesson = async (req: Request, res: Response, next: NextFunction) => 
       throw new Error("User ID not found");
     }
 
-    const result = await LessonService.createLesson(courseId, req.body, instructorId);
+    const result = await LessonService.createLesson(courseId as string, req.body, instructorId);
 
     sendResponse(res, {
       statusCode: 201,
@@ -34,7 +34,7 @@ const updateLesson = async (req: Request, res: Response, next: NextFunction) => 
       throw new Error("User ID not found");
     }
 
-    const result = await LessonService.updateLesson(lessonId, req.body, instructorId);
+    const result = await LessonService.updateLesson(lessonId as string, req.body, instructorId);
 
     sendResponse(res, {
       statusCode: 200,
@@ -56,7 +56,7 @@ const deleteLesson = async (req: Request, res: Response, next: NextFunction) => 
       throw new Error("User ID not found");
     }
 
-    await LessonService.deleteLesson(lessonId, instructorId);
+    await LessonService.deleteLesson(lessonId as string, instructorId);
 
     sendResponse(res, {
       statusCode: 200,
@@ -72,7 +72,7 @@ const getLessonsByCourse = async (req: Request, res: Response, next: NextFunctio
   try {
     const { courseId } = req.params;
 
-    const result = await LessonService.getLessonsByCourse(courseId);
+    const result = await LessonService.getLessonsByCourse(courseId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -89,7 +89,7 @@ const getLessonById = async (req: Request, res: Response, next: NextFunction) =>
   try {
     const { lessonId } = req.params;
 
-    const result = await LessonService.getLessonById(lessonId);
+    const result = await LessonService.getLessonById(lessonId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -112,7 +112,7 @@ const reorderLessons = async (req: Request, res: Response, next: NextFunction) =
       throw new Error("User ID not found");
     }
 
-    await LessonService.reorderLessons(courseId, lessons, instructorId);
+    await LessonService.reorderLessons(courseId as string, lessons, instructorId);
 
     sendResponse(res, {
       statusCode: 200,

@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload, Secret } from "jsonwebtoken";
-import config from "../config";
-import { prisma } from "../lib/prisma";
-import { Role } from "../../generated/prisma/client";
+import config from "../config/index.js";
+import { prisma } from "../lib/prisma.js";
+import { Role } from "../../generated/prisma/client.js";
 
 export interface TUser extends JwtPayload {
   id: string;

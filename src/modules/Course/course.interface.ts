@@ -1,4 +1,4 @@
-import { CourseStatus, Difficulty, PriceType } from "../../generated/prisma/client";
+import { Difficulty, PriceType } from "../../../generated/prisma/enums.js";
 
 export interface ICreateCoursePayload {
   title: string;

@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs"
-import { prisma } from "../lib/prisma";
-import { Role } from "../../generated/prisma/enums";
+import { prisma } from "../lib/prisma.js";
+import { Role, Status } from "../../generated/prisma/enums.js";
 
 const seedAdmin = async () => {
   try {
@@ -10,7 +10,8 @@ const seedAdmin = async () => {
     name: process.env.ADMIN_NAME as string,
     email: process.env.ADMIN_EMAIL as string,
     password: hashedPassword,
-    role: Role.ADMIN
+    role: Role.ADMIN,
+    status: Status.ACTIVE,
   };
 
 

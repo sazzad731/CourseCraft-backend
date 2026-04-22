@@ -1,7 +1,7 @@
 import express from "express";
-import { LessonProgressController } from "./lessonProgress.controller";
-import auth from "../../middlewares/auth";
-import { Role } from "../../../generated/prisma/enums";
+import { LessonProgressController } from "./lessonProgress.controller.js";
+import auth from "../../middlewares/auth.js";
+import { Role } from "../../../generated/prisma/enums.js";
 
 const router = express.Router();
 

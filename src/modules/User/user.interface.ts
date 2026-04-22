@@ -10,7 +10,7 @@ export interface IUserResponse {
   email: string;
   role: string;
   status: string;
-  phone?: string;
-  address?: string;
+  phone?: string | null;
+  address?: string | null;
   createdAt: Date;
 }

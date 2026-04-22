@@ -1,7 +1,7 @@
 import express from "express";
-import { EnrollmentController } from "./enrollment.controller";
-import auth from "../../middlewares/auth";
-import { Role } from "../../../generated/prisma/enums";
+import { EnrollmentController } from "./enrollment.controller.js";
+import auth from "../../middlewares/auth.js";
+import { Role } from "../../../generated/prisma/enums.js";
 
 
 const router = express.Router();

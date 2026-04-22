@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { CertificateService } from "./certificate.service";
-import { CERTIFICATE_MESSAGES } from "./certificate.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { CertificateService } from "./certificate.service.js";
+import { CERTIFICATE_MESSAGES } from "./certificate.constant.js";
 
 const getStudentCertificates = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -28,7 +28,7 @@ const getCertificateById = async (req: Request, res: Response, next: NextFunctio
   try {
     const { certificateId } = req.params;
 
-    const result = await CertificateService.getCertificateById(certificateId);
+    const result = await CertificateService.getCertificateById(certificateId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -50,7 +50,7 @@ const hasCertificate = async (req: Request, res: Response, next: NextFunction) =
       throw new Error("User ID not found");
     }
 
-    const result = await CertificateService.hasCertificate(studentId, courseId);
+    const result = await CertificateService.hasCertificate(studentId, courseId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -69,7 +69,7 @@ const getCourseCertificates = async (req: Request, res: Response, next: NextFunc
     const { page = 1, limit = 10 } = req.query;
 
     const result = await CertificateService.getCourseCertificates(
-      courseId,
+      courseId as string,
       Number(page),
       Number(limit)
     );
@@ -89,7 +89,7 @@ const getCourseStatistics = async (req: Request, res: Response, next: NextFuncti
   try {
     const { courseId } = req.params;
 
-    const result = await CertificateService.getCourseStatistics(courseId);
+    const result = await CertificateService.getCourseStatistics(courseId as string);
 
     sendResponse(res, {
       statusCode: 200,

@@ -1,11 +1,11 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../lib/prisma.js";
 import {
   ICreateQuizPayload,
   IUpdateQuizPayload,
   IQuizResponse,
   IQuizWithQuestions,
-} from "./quiz.interface";
-import { QUIZ_MESSAGES } from "./quiz.constant";
+} from "./quiz.interface.js";
+import { QUIZ_MESSAGES } from "./quiz.constant.js";
 
 // Create quiz for a course
 const createQuiz = async (

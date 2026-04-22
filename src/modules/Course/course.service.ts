@@ -1,12 +1,12 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../lib/prisma.js";
 import {
   ICreateCoursePayload,
   IUpdateCoursePayload,
   IApproveCoursePayload,
   ICourseResponse,
-} from "./course.interface";
-import { COURSE_MESSAGES } from "./course.constant";
-import { CourseStatus } from "../../../generated/prisma/enums";
+} from "./course.interface.js";
+import { COURSE_MESSAGES } from "./course.constant.js";
+import { CourseStatus } from "../../../generated/prisma/enums.js";
 
 // Create course (DRAFT by default)
 const createCourse = async (

@@ -2,7 +2,8 @@ import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.join(process.cwd(), ".env") });
 export default {
-    port: process.env.PORT,
+    port: process.env.PORT || 5000,
     database_url: process.env.DATABASE_URL,
-    secret: process.env.JWT_SECRET,
+    secret: process.env.JWT_SECRET || "your-secret-key-change-in-production",
+    environment: process.env.NODE_ENV || "development",
 };

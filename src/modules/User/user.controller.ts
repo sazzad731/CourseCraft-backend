@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { UserService } from "./user.service";
-import { USER_MESSAGES } from "./user.constant";
+import sendResponse from "../../utils/sendResponse.js";
+import { UserService } from "./user.service.js";
+import { USER_MESSAGES } from "./user.constant.js";
 
 const getPendingUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -46,7 +46,7 @@ const updateUserStatus = async (req: Request, res: Response, next: NextFunction)
     const { status, rejection_reason } = req.body;
 
     const result = await UserService.updateUserStatus({
-      userId,
+      userId: userId as string,
       status,
       rejection_reason,
     });
@@ -68,7 +68,7 @@ const getUserById = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { userId } = req.params;
 
-    const user = await UserService.getUserById(userId);
+    const user = await UserService.getUserById(userId as string);
 
     sendResponse(res, {
       statusCode: 200,

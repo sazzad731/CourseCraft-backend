@@ -1,10 +1,10 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../lib/prisma.js";
 import {
   ISubmitAttemptPayload,
   IQuizAttemptResponse,
   IAttemptResult,
-} from "./quizAttempt.interface";
-import { QUIZ_ATTEMPT_MESSAGES } from "./quizAttempt.constant";
+} from "./quizAttempt.interface.js";
+import { QUIZ_ATTEMPT_MESSAGES } from "./quizAttempt.constant.js";
 
 // Submit quiz attempt and calculate score
 const submitAttempt = async (

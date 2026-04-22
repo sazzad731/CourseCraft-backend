@@ -1,6 +1,6 @@
-import { prisma } from "../../lib/prisma";
-import { IApproveUserPayload, IUserResponse } from "./user.interface";
-import { USER_MESSAGES } from "./user.constant";
+import { prisma } from "../../lib/prisma.js";
+import { IApproveUserPayload, IUserResponse } from "./user.interface.js";
+import { USER_MESSAGES } from "./user.constant.js";
 
 // Get all pending users (for admin approval)
 const getPendingUsers = async (): Promise<IUserResponse[]> => {

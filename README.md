@@ -77,8 +77,8 @@ A production-ready backend for an online course and quiz platform built with Nod
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
-cd backend
+git clone https://github.com/sazzad731/CourseCraft-backend.git
+cd CourseCraft-backend
 ```
 
 ### 2. Install Dependencies
@@ -95,16 +95,23 @@ PORT=5000
 NODE_ENV=development
 
 # Database Configuration (MariaDB/MySQL)
+DATABASE_URL="mysql://root:password@localhost:4000/database_name?sslaccept=strict&connection_limit=10&connect_timeout=30"
 DATABASE_HOST=localhost
 DATABASE_USER=root
 DATABASE_PASSWORD=your_password
 DATABASE_NAME=online_quiz_platform
+DATABASE_PORT=4000
 
 # JWT Configuration
 JWT_SECRET=your-super-secret-key-change-in-production
 
 # CORS Origins (comma-separated)
 CORS_ORIGINS=http://localhost:3000,http://localhost:3001
+
+# for seed admin
+ADMIN_NAME=Admin
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=admin123
 ```
 
 ### 4. Setup Database
@@ -120,35 +127,6 @@ This will:
 - Generate the Prisma client
 
 ### 5. (Optional) Seed Admin User
-
-Create a script file `src/script/seedAdmin.ts`:
-
-```typescript
-import { prisma } from "../lib/prisma";
-import bcrypt from "bcryptjs";
-
-async function main() {
-  const hashedPassword = await bcrypt.hash("admin123", 10);
-
-  const admin = await prisma.user.create({
-    data: {
-      name: "Admin User",
-      email: "admin@example.com",
-      password: hashedPassword,
-      role: "ADMIN",
-      status: "ACTIVE",
-    },
-  });
-
-  console.log("Admin created:", admin);
-}
-
-main()
-  .catch(console.error)
-  .finally(() => process.exit(0));
-```
-
-Then run:
 ```bash
 npm run seed:admin
 ```

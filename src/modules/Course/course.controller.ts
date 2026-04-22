@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import sendResponse from "../../utils/sendResponse";
-import { CourseService } from "./course.service";
-import { COURSE_MESSAGES } from "./course.constant";
-import { Role } from "../../../generated/prisma/enums";
+import sendResponse from "../../utils/sendResponse.js";
+import { CourseService } from "./course.service.js";
+import { COURSE_MESSAGES } from "./course.constant.js";
+import { Role } from "../../../generated/prisma/enums.js";
 
 const createCourse = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -32,7 +32,7 @@ const updateCourse = async (req: Request, res: Response, next: NextFunction) => 
       throw new Error("User ID not found");
     }
 
-    const result = await CourseService.updateCourse(courseId, instructorId, req.body);
+    const result = await CourseService.updateCourse(courseId as string, instructorId, req.body);
 
     sendResponse(res, {
       statusCode: 200,
@@ -54,7 +54,7 @@ const submitForReview = async (req: Request, res: Response, next: NextFunction) 
       throw new Error("User ID not found");
     }
 
-    const result = await CourseService.submitForReview(courseId, instructorId);
+    const result = await CourseService.submitForReview(courseId as string, instructorId);
 
     sendResponse(res, {
       statusCode: 200,
@@ -73,7 +73,7 @@ const updateCourseStatus = async (req: Request, res: Response, next: NextFunctio
     const { status, rejection_reason } = req.body;
 
     const result = await CourseService.updateCourseStatus({
-      courseId,
+      courseId: courseId as string,
       status,
       rejection_reason,
     });
@@ -150,7 +150,7 @@ const getCourseById = async (req: Request, res: Response, next: NextFunction) =>
   try {
     const { courseId } = req.params;
 
-    const result = await CourseService.getCourseById(courseId);
+    const result = await CourseService.getCourseById(courseId as string);
 
     sendResponse(res, {
       statusCode: 200,
@@ -172,7 +172,7 @@ const deleteCourse = async (req: Request, res: Response, next: NextFunction) => 
       throw new Error("User ID not found");
     }
 
-    await CourseService.deleteCourse(courseId, instructorId);
+    await CourseService.deleteCourse(courseId as string, instructorId);
 
     sendResponse(res, {
       statusCode: 200,
